@@ -1,0 +1,73 @@
+# --- Visual Studio ---
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- Build e Output ---
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+
+# --- .NET ---
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# --- MAUI Platforms ---
+Platforms/Android/bin/
+Platforms/Android/obj/
+Platforms/iOS/bin/
+Platforms/iOS/obj/
+Platforms/MacCatalyst/bin/
+Platforms/MacCatalyst/obj/
+Platforms/Windows/bin/
+Platforms/Windows/obj/
+
+# --- Android específicos ---
+*.apk
+*.aab
+*.keystore
+*.jks
+*.ap_
+*.dex
+*.class
+*.log
+*.androidproj
+*.gradle/
+
+# --- iOS/macOS específicos ---
+*.dSYM/
+*.ipa
+*.xcworkspace/
+*.xcodeproj/
+*.xcuserdata/
+*/project.xcworkspace/
+*/xcshareddata/
+*.moved-aside
+DerivedData/
+
+# --- Windows específicos ---
+AppPackages/
+BundleArtifacts/
+Generated Files/
+
+# --- Package Managers ---
+node_modules/
+npm-debug.log
+paket-files/
+
+# --- Configs Locais ---
+*.local
+.env
+
+# --- Outros arquivos que não devem ir para o Git ---
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.DS_Store
+Thumbs.db

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestesPP.Views.MainPage">
+
+	<!-- FUNDO -->
+	<ContentPage.Background>
+		<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+			<GradientStop Color="#0F172A" Offset="0"/>
+			<GradientStop Color="#1E293B" Offset="1"/>
+		</LinearGradientBrush>
+	</ContentPage.Background>
+
+	<ScrollView>
+		<VerticalStackLayout Padding="20" Spacing="22">
+
+			<Label Text="Previsão do Tempo"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+			<Label Text="{Binding CidadeEstado}"
+                   FontSize="16"
+                   TextColor="#CBD5E1"
+                   HorizontalOptions="Center"/>
+
+			<!-- BUSCA -->
+			<Frame BackgroundColor="White"
+                   CornerRadius="22"
+                   Padding="16">
+
+				<VerticalStackLayout Spacing="12">
+
+					<Entry Placeholder="Digite o CEP"
+                           Text="{Binding Cep}"
+                           Keyboard="Numeric"
+                           BackgroundColor="#F1F5F9"
+                           TextColor="Black"/>
+
+					<Button Text="Buscar previsão"
+                            Command="{Binding BuscarCommand}"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            CornerRadius="14"/>
+
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- HOJE -->
+			<Frame BackgroundColor="White"
+                   CornerRadius="30"
+                   Padding="20">
+
+				<VerticalStackLayout HorizontalOptions="Center">
+
+					<Label Text="{Binding ClimaHoje.DiaSemana}"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#475569"/>
+
+					<Image Source="{Binding ClimaHoje.Icon}"
+                           WidthRequest="100"
+                           HeightRequest="100"/>
+
+					<Label Text="{Binding ClimaHoje.Condicao}"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#0F172A"/>
+
+					<HorizontalStackLayout Spacing="20">
+
+						<Label Text="{Binding ClimaHoje.TempMax, StringFormat='↑ {0}°C'}"
+                               TextColor="#DC2626"/>
+
+						<Label Text="{Binding ClimaHoje.TempMin, StringFormat='↓ {0}°C'}"
+                               TextColor="#2563EB"/>
+
+					</HorizontalStackLayout>
+
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- PRÓXIMOS DIAS -->
+			<Label Text="Próximos dias"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+
+			<CollectionView ItemsSource="{Binding Previsoes}"
+                            ItemsLayout="HorizontalList"
+                            HeightRequest="200">
+
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Frame WidthRequest="150"
+                               Margin="8"
+                               Padding="14"
+                               CornerRadius="22"
+                               BackgroundColor="White">
+
+							<VerticalStackLayout HorizontalOptions="Center">
+
+								<Label Text="{Binding DiaSemana}"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="#475569"/>
+
+								<Image Source="{Binding Icon}"
+                                       WidthRequest="60"
+                                       HeightRequest="60"/>
+
+								<Label Text="{Binding TempMax, StringFormat='↑ {0}°C'}"
+                                       TextColor="#DC2626"/>
+
+								<Label Text="{Binding TempMin, StringFormat='↓ {0}°C'}"
+                                       TextColor="#2563EB"/>
+
+							</VerticalStackLayout>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+
+			</CollectionView>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
